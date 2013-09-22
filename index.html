@@ -94,7 +94,8 @@
               {amount: 2903 , title: 'Confirmed Users'},
               {amount: 1333 , title: 'Active Users'},
             ],
-            axisTemplate: _.template('<div class="title"><%= title %></div><div class="amount"><%= amount %></div>')
+            axisTemplate: _.template('<div class="title"><%= title %></div>' +
+                                     '<div class="amount"><%= amount %>  (<%= percentageConversion %>%)</div>')
           });
           $('.funnel-container').append(funnel.el);
           $('#update').on('click' , function () {

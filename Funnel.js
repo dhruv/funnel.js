@@ -27,13 +27,18 @@ define([] , function () {
       'click .x-axis' : 'onAxisClick'
     },
     
-    initialize: function () {
+    initialize: function (options) {
       this.setup();
       this.build();
       this.attach();
       _.defer(function (that) {
         that.render();
       } , this);
+      var baseValue = options.data[0]['amount'];
+      _.each(options.data, function(datum, index) {
+        datum['percentageConversion'] = (datum['amount'] / baseValue * 100).toFixed(2);
+        baseValue = datum['amount'];
+      });
     },
 
     setup: function () {
